@@ -1,7 +1,24 @@
 <template>
     <div>
-        <search-form :objData="aSearch" @handleFormSubmit="handleSearch"></search-form>
-        <table-paging :columns="aTableColumns" :data="aTableData" :pagination="objPageControl" :loading="false" :show-header="true" :stripe="true" :border="true" :disHover="false" :height="false" :width="false" @selectChange="selectChange" @changePage="changePage" @changePageSize="changePageSize">
+        <search-form 
+            :objData="aSearch" 
+            @handleFormSubmit="handleSearch"
+            >
+        </search-form>
+        <table-paging 
+            :columns="aTableColumns"
+            :data="aTableData" 
+            :pagination="objPageControl" 
+            :loading="false" 
+            :show-header="true" 
+            :stripe="true" 
+            :border="true" 
+            :disHover="false" 
+            :height="false" 
+            :width="false"
+            @selectChange="selectChange"
+            @changePage="changePage" 
+            @changePageSize="changePageSize">
         </table-paging>
     </div>
 </template>
