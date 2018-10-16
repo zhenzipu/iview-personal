@@ -1,13 +1,16 @@
 <style scoped>
 .ivu-form-item {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+.ivu-input-number {
+    width: 100%;
 }
 </style>
 <template>
-    <Form :model="objFormData" :label-width="80">
+    <Form ref="submitForm" autocomplete="on" :model="objFormData" :label-width="100">
         <Row v-if="objData.length>4" :gutter="20">
             <Col span="22">
-            <Row>
+            <Row type="flex" justify="start">
                 <Col span='6' v-for="(item,index) in objData" :key="index">
                 <div v-if="item.type=='select'">
                     <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
@@ -16,7 +19,7 @@
                         </Select>
                     </FormItem>
                 </div>
-                <div v-if="item.type=='radio'">
+                <div v-else-if="item.type=='radio'">
                     <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
                         <RadioGroup v-model="objFormData[item.value]">
                             <Radio v-for="child_item in item.data" :label="child_item.value" :key="child_item.value">{{ child_item.name }}</Radio>
@@ -29,23 +32,23 @@
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='inputNumber'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
+                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
                         <InputNumber :min="0" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='date'">
                     <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                        <DatePicker :type="item.dateType" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
+                        <DatePicker :type="item.dateType" :options="dateLimit(item.limit)" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
                     </FormItem>
                 </div>
                 </Col>
             </Row>
             </Col>
             <Col span="2">
-            <Button type="primary" @click="handleSubmit()">搜索</Button>
+            <Button type="primary" @click="handleSubmit('submitForm')">搜索</Button>
             </Col>
         </Row>
-        <Row v-else :gutter="20">
+        <Row v-else :gutter="20" type="flex" justify="start">
             <Col span='5' v-for="(item,index) in objData" :key="index">
             <div v-if="item.type=='select'">
                 <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
@@ -54,7 +57,7 @@
                     </Select>
                 </FormItem>
             </div>
-            <div v-if="item.type=='radio'">
+            <div v-else-if="item.type=='radio'">
                 <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
                     <RadioGroup v-model="objFormData[item.value]">
                         <Radio v-for="child_item in item.data" :label="child_item.value" :key="child_item.value">{{ child_item.name }}</Radio>
@@ -67,18 +70,18 @@
                 </FormItem>
             </div>
             <div v-else-if="item.type=='inputNumber'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
+                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
                     <InputNumber :min="0" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='date'">
                 <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                    <DatePicker :type="item.dateType" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
+                    <DatePicker :type="item.dateType" :options="dateLimit(item.limit)" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
                 </FormItem>
             </div>
             </Col>
             <Col span="4">
-            <Button type="primary" @click="handleSubmit()">搜索</Button>
+            <Button type="primary" @click="handleSubmit('submitForm')">搜索</Button>
             </Col>
         </Row>
     </Form>
@@ -112,6 +115,37 @@ export default {
                     ]
                 },
                 {
+                    type: 'radio',
+                    label: '单选框',
+                    value: 'radio',
+                    required: true,
+                    placeholder: '请选择',
+                    data: [
+                        {
+                            name: 'check1',
+                            value: '1'
+                        },
+                        {
+                            name: 'check2',
+                            value: '2'
+                        }
+                    ]
+                },
+                {
+                    type: 'input',
+                    value: 'input',
+                    lable: '输入框',
+                    required: true,
+                    placeholder: '请输入'
+                },
+                {
+                    type: 'inputNumber',
+                    value: 'inputNumber',
+                    lable: '数字输入框',
+                    required: true,
+                    placeholder: '请输入'
+                },
+                {
                     type: 'date',
                     label: '开始时间',
                     dateType: 'month',
@@ -137,45 +171,22 @@ export default {
         dateLimit(limit) {
             return {
                 disabledDate(date) {
-                    return date && date.valueOf() < new Date(limit);
+                    return (
+                        (date && date.valueOf() > new Date(limit.up)) ||
+                        (date && date.valueOf() < new Date(limit.down))
+                    );
                 }
             };
         },
         // 提交搜索框数据
-        handleSubmit() {
-            // 判断时间录入规则
-            let aDateValue = [];
-            this.objData.map(item => {
-                if (item.type == 'date') {
-                    aDateValue.push(item.value);
+        handleSubmit(name) {
+            this.$refs[name].validate(valid => {
+                if (valid) {
+                    this.$emit('handleFormSubmit', this.objFormData);
+                } else {
+                    this.$Message.error('搜索参数不符合规则!');
                 }
             });
-            switch (aDateValue.length) {
-                case 1:
-                    if (!this.objFormData[aDateValue[0]]) {
-                        this.$Message.warning('请选择查询时间！');
-                    } else {
-                        this.$emit('handleFormSubmit', this.objFormData);
-                    }
-                    break;
-
-                case 2:
-                    if (
-                        (!this.objFormData[aDateValue[0]] &&
-                            !this.objFormData[aDateValue[1]]) ||
-                        (this.objFormData[aDateValue[0]] &&
-                            this.objFormData[aDateValue[1]])
-                    ) {
-                        this.$emit('handleFormSubmit', this.objFormData);
-                    } else {
-                        this.$Message.warning('请选择起止时间！');
-                    }
-                    break;
-
-                default:
-                    this.$emit('handleFormSubmit', this.objFormData);
-                    break;
-            }
         },
         dataChange(date, key) {
             this.objFormData[key] = date;

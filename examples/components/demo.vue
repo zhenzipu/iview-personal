@@ -1,25 +1,13 @@
 <template>
     <div>
-        <search-form 
-            :objData="aSearch" 
-            @handleFormSubmit="handleSearch"
-            >
+        <h2>搜索框</h2>
+        <search-form :objData="aSearch" @handleFormSubmit="handleSearch">
         </search-form>
-        <table-paging 
-            :columns="aTableColumns"
-            :data="aTableData" 
-            :pagination="objPageControl" 
-            :loading="false" 
-            :show-header="true" 
-            :stripe="true" 
-            :border="true" 
-            :disHover="false" 
-            :height="false" 
-            :width="false"
-            @selectChange="selectChange"
-            @changePage="changePage" 
-            @changePageSize="changePageSize">
+        <h2>分页table</h2>
+        <table-paging :columns="aTableColumns" :data="aTableData" :pagination="objPageControl" :loading="false" :show-header="true" :stripe="true" :border="true" :disHover="false" :height="false" :width="false" @selectChange="selectChange" @changePage="changePage" @changePageSize="changePageSize">
         </table-paging>
+        <h2>合并table</h2>
+        <table-combine id="zzp" :columns="aTableColumns" :data="aTableData" :border="true" :disHover="true" @changePageSize="changePageSize"></table-combine>
     </div>
 </template>
 
@@ -34,6 +22,7 @@ export default {
                     type: 'select',
                     label: '下拉框',
                     value: 'select',
+                    required: true,
                     placeholder: '请选择',
                     data: [
                         {
@@ -47,13 +36,48 @@ export default {
                     ]
                 },
                 {
+                    type: 'radio',
+                    label: '单选框',
+                    value: 'radio',
+                    required: true,
+                    placeholder: '请选择',
+                    data: [
+                        {
+                            name: 'check1',
+                            value: '1'
+                        },
+                        {
+                            name: 'check2',
+                            value: '2'
+                        }
+                    ]
+                },
+                {
+                    type: 'input',
+                    value: 'input',
+                    label: '输入框',
+                    required: true,
+                    placeholder: '请输入'
+                },
+                {
+                    type: 'inputNumber',
+                    value: 'inputNumber',
+                    label: '数字输入框',
+                    required: true,
+                    placeholder: '请输入'
+                },
+                {
                     type: 'date',
                     label: '开始时间',
                     dateType: 'month',
                     value: 'begin',
                     format: 'yyyy-MM',
+                    required: true,
                     placeholder: '选择开始时间',
-                    limit: '2015-01-01 00:00:00'
+                    limit: {
+                        up: '2018-01-01 00:00:00',
+                        // down: '2015-01-01 00:00:00'
+                    }
                 },
                 {
                     type: 'date',
@@ -61,11 +85,20 @@ export default {
                     dateType: 'month',
                     value: 'end',
                     format: 'yyyy-MM',
+                    required: true,
                     placeholder: '选择结束时间',
-                    limit: '2015-01-01 00:00:00'
+                    limit: {
+                        up: '2018-01-01 00:00:00',
+                        down: '2015-01-01 00:00:00'
+                    }
                 }
             ],
             aTableData: [
+                {
+                    key1: 'aaa',
+                    key2: 'bbb',
+                    key3: 'ccc'
+                },
                 {
                     key1: 'aaa',
                     key2: 'bbb',
@@ -85,6 +118,7 @@ export default {
                 },
                 {
                     key: 'key1',
+                    combine: true,
                     title: '第一个'
                 },
                 {
@@ -93,6 +127,7 @@ export default {
                 },
                 {
                     key: 'key3',
+                    combine: true,
                     title: '第三个'
                 }
             ],
