@@ -22,24 +22,30 @@ export default {
         'size'
     ],
     data() {
-        return {};
+        return {
+            //
+        };
     },
     methods: {
         // 多选
         selectChange(selection) {
             this.$emit('selectChange', selection);
         },
+
         // 合并表格
         combineCell() {
             let tabs = document.getElementById('tableCombine' + this.id);
+
             // 拿到所有行
             let tBody = tabs
                 .querySelector('.ivu-table')
                 .querySelector('.ivu-table-body')
                 .querySelector('.ivu-table-tbody')
                 .querySelectorAll('tr');
+
             // 拿到数据
             let aSourceData = this.data;
+
             // 需要合并key遍历
             let aColumns = [];
             this.columns.map(item => {
@@ -49,6 +55,8 @@ export default {
                     aColumns = aColumns.concat(item);
                 }
             });
+
+            // 处理表头合并数据
             aColumns.map(item => {
                 if (item.combine) {
                     let field = item.key;
@@ -74,6 +82,8 @@ export default {
                     }
                 }
             });
+            
+            // 根据新增合并字段处理td
             aColumns.map((item, index) => {
                 // 根据columns判断是否需要合并
                 if (item.combine) {
@@ -94,6 +104,7 @@ export default {
         }
     },
     mounted() {
+        // 合并表格
         this.combineCell();
     }
 };

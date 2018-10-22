@@ -98,6 +98,7 @@ export default {
             objFormData: {},
             // objData数据示例
             objExample: [
+                // 下拉框
                 {
                     type: 'select',
                     label: '下拉框',
@@ -114,6 +115,7 @@ export default {
                         }
                     ]
                 },
+                // 单选框
                 {
                     type: 'radio',
                     label: '单选框',
@@ -131,6 +133,7 @@ export default {
                         }
                     ]
                 },
+                // 输入框
                 {
                     type: 'input',
                     value: 'input',
@@ -138,6 +141,7 @@ export default {
                     required: true,
                     placeholder: '请输入'
                 },
+                // 数字输入框
                 {
                     type: 'inputNumber',
                     value: 'inputNumber',
@@ -145,23 +149,18 @@ export default {
                     required: true,
                     placeholder: '请输入'
                 },
+                // 时间/日期选择框
                 {
                     type: 'date',
-                    label: '开始时间',
+                    label: '时间/日期',
                     dateType: 'month',
                     value: 'begin',
                     format: 'yyyy-MM',
                     placeholder: '选择开始时间',
-                    limit: '2015-01-01 00:00:00'
-                },
-                {
-                    type: 'date',
-                    label: '结束时间',
-                    dateType: 'month',
-                    value: 'end',
-                    format: 'yyyy-MM',
-                    placeholder: '选择结束时间',
-                    limit: '2015-01-01 00:00:00'
+                    limit: {
+                        up: '2018-01-01 00:00:00',
+                        down: '2015-01-01 00:00:00'
+                    }
                 }
             ]
         };
@@ -178,6 +177,7 @@ export default {
                 }
             };
         },
+
         // 提交搜索框数据
         handleSubmit(name) {
             this.$refs[name].validate(valid => {
@@ -188,6 +188,8 @@ export default {
                 }
             });
         },
+
+        // 时间选择框变化触发
         dataChange(date, key) {
             this.objFormData[key] = date;
         }

@@ -54,6 +54,60 @@ changePageSize| 分页模式下有效，每页条数发生变化触发 | pageSiz
 ---|---|---|---
 combine | 是否向下合并 |  Boolean | false
 
+```
+<table-combine 
+    :columns="aTableColumns"
+    :data="aTableData" 
+    :pagination="objPageControl" 
+    :loading="false" 
+    :show-header="true" 
+    :stripe="true" 
+    :border="true" 
+    :disHover="false" 
+    :height="false" 
+    :width="false" 
+    :size="size"
+    @selectChange="selectChange"
+</table-combine>
+```
+
+
+
+3.编辑table
+
+> ==columns增加属性==
+
+属性 | 说明 | 类型 | 默认值
+---|---|---|---
+edit | 编辑参数 |  obj | null
+
+```
+<table-edit 
+    :columns="aTableColumns"
+    :data="aTableData" 
+    :pagination="objPageControl" 
+    :loading="false" 
+    :show-header="true" 
+    :stripe="true" 
+    :border="true" 
+    :disHover="false" 
+    :height="false" 
+    :width="false" 
+    :size="size"
+</table-edit>
+```
+
+
+```
+
+edit: {
+    type: 'input',//必填input、inputNumber、select
+    key: 'key3',//必填
+    option: []//可填：select必填时option下拉框数据
+}
+```
+
+
 3.搜索表单
     支持下拉框、输入框、数字输入口、单选框、时间日期选择框搜索功能
 
