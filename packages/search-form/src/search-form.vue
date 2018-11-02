@@ -7,37 +7,37 @@
 }
 </style>
 <template>
-    <Form ref="submitForm" autocomplete="on" :model="objFormData" :label-width="100">
+    <Form ref="submitForm" autocomplete="on" :model="objFormData" :label-width="bhidLable?null:100">
         <Row v-if="objData.length>4" :gutter="20">
             <Col span="22">
-            <Row type="flex" justify="start">
+            <Row type="flex" justify="start" :gutter='10'>
                 <Col span='6' v-for="(item,index) in objData" :key="index">
                 <div v-if="item.type=='select'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                        <Select v-model="objFormData[item.value]" clearable :placeholder="item.placeholder" filterable>
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                        <Select :value="item.defaultValue||null" @on-change="(value)=>handleSelectChange(value,item.value)" :clearable="item.clearable||false" :filterable="item.filterable||false" :placeholder="item.placeholder">
                             <Option v-for="child_item in item.data" :value="child_item.value" :key="child_item.value">{{ child_item.name }}</Option>
                         </Select>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='radio'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                        <RadioGroup v-model="objFormData[item.value]">
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                        <RadioGroup :value="item.defaultValue||null" @on-change="(value)=>handleSelectChange(value,item.value)">
                             <Radio v-for="child_item in item.data" :label="child_item.value" :key="child_item.value">{{ child_item.name }}</Radio>
                         </RadioGroup>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='input'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
-                        <Input v-model="objFormData[item.value]" :placeholder="item.placeholder"></Input>
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
+                        <Input v-model="objFormData[item.value]" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='inputNumber'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
-                        <InputNumber :min="0" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
+                        <InputNumber :min="1" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='date'">
-                    <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
                         <DatePicker :type="item.dateType" :options="dateLimit(item.limit)" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
                     </FormItem>
                 </div>
@@ -48,34 +48,34 @@
             <Button type="primary" @click="handleSubmit('submitForm')">搜索</Button>
             </Col>
         </Row>
-        <Row v-else :gutter="20" type="flex" justify="start">
+        <Row v-else :gutter="10" type="flex" justify="start">
             <Col span='5' v-for="(item,index) in objData" :key="index">
             <div v-if="item.type=='select'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                    <Select v-model="objFormData[item.value]" clearable :placeholder="item.placeholder" filterable>
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                    <Select :value="item.defaultValue||null" @on-change="(value)=>handleSelectChange(value,item.value)" :clearable="item.clearable||false" :filterable="item.filterable||false" :placeholder="item.placeholder">
                         <Option v-for="child_item in item.data" :value="child_item.value" :key="child_item.value">{{ child_item.name }}</Option>
                     </Select>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='radio'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
-                    <RadioGroup v-model="objFormData[item.value]">
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                    <RadioGroup :value="item.defaultValue||null" @on-change="(value)=>handleSelectChange(value,item.value)">
                         <Radio v-for="child_item in item.data" :label="child_item.value" :key="child_item.value">{{ child_item.name }}</Radio>
                     </RadioGroup>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='input'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
-                    <Input v-model="objFormData[item.value]" :placeholder="item.placeholder"></Input>
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
+                    <Input v-model="objFormData[item.value]" :placeholder="item.placeholder" clearable></Input>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='inputNumber'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
-                    <InputNumber :min="0" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
+                    <InputNumber :min="1" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='date'">
-                <FormItem :label="item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'change'}:null">
                     <DatePicker :type="item.dateType" :options="dateLimit(item.limit)" :value="objFormData[item.value]" :format="objFormData[item.format]" :placeholder="item.placeholder" @on-change="(datetime) => { dataChange(datetime,item.value)}"></DatePicker>
                 </FormItem>
             </div>
@@ -90,7 +90,8 @@
 export default {
     name: 'search-form',
     props: {
-        objData: Array
+        objData: Array,
+        bhidLable: Boolean
     },
     data() {
         return {
@@ -166,6 +167,9 @@ export default {
         };
     },
     methods: {
+        handleSelectChange(value, key) {
+            this.objFormData[key] = value;
+        },
         // 时间范围限制
         dateLimit(limit) {
             return {
@@ -194,6 +198,14 @@ export default {
             this.objFormData[key] = date;
         }
     },
-    mounted() {}
+    mounted() {
+        this.objData.map(item => {
+            if (item.type == 'select' || item.type == 'radio') {
+                if (item.defaultValue) {
+                    this.objFormData[item.value] = item.defaultValue;
+                }
+            }
+        });
+    }
 };
 </script>

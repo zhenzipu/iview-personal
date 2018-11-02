@@ -8,12 +8,13 @@ h2 {
 </style>
 <template>
     <div>
-        <h2><Icon type="logo-buffer" />DEMO</h2>
+        <h2>
+            <Icon type="logo-buffer" />DEMO</h2>
         <Collapse v-model="defaultName" accordion>
             <Panel name="1">
                 搜索框
                 <div slot="content">
-                    <search-form :objData="aSearch" @handleFormSubmit="handleSearch"></search-form>
+                    <search-form :objData="aSearch" :bhidLable="true" @handleFormSubmit="handleSearch"></search-form>
                 </div>
             </Panel>
             <Panel name="2">
@@ -52,6 +53,9 @@ export default {
                     label: '下拉框',
                     value: 'select',
                     required: true,
+                    clearable: true,
+                    filterable: true,
+                    defaultValue: '1',
                     placeholder: '请选择',
                     data: [
                         {
@@ -68,6 +72,7 @@ export default {
                     type: 'radio',
                     label: '单选框',
                     value: 'radio',
+                    defaultValue: '1',
                     required: true,
                     placeholder: '请选择',
                     data: [
@@ -85,6 +90,8 @@ export default {
                     type: 'input',
                     value: 'input',
                     label: '输入框',
+                    prefix: 'ios-contact',
+                    suffix: 'ios-search',
                     required: true,
                     placeholder: '请输入'
                 },

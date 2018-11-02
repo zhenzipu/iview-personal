@@ -114,6 +114,7 @@ edit: {
 ```
 <search-form 
     :objData="aSearch" 
+     :bhidLable="false"
     @handleFormSubmit="handleSearch"
     >
 </search-form>
@@ -122,6 +123,7 @@ edit: {
 属性 | 说明 | 类型 | 默认值
 ---|---|---|---
 objData | 显示的结构化数据 |  Array | []
+bhidLable | 是否显示label |  Boolean | true
 
 #### objData 
 > ==下拉框==
@@ -131,6 +133,9 @@ objData | 显示的结构化数据 |  Array | []
     type: 'select',
     label: '下拉框',
     value: 'select',
+    clearable: true,//是否可清除
+    filterable: true,//是否可搜索
+    defaultValue: '1',//默认value
     required: true,//是否必须项
     placeholder: '请选择',
     data: [
@@ -152,6 +157,7 @@ objData | 显示的结构化数据 |  Array | []
     type: 'radio',
     label: '单选框',
     value: 'radio',
+    defaultValue: '1',//默认value
     required: true,//是否必须项
     placeholder: '请选择',
     data: [
@@ -173,6 +179,8 @@ objData | 显示的结构化数据 |  Array | []
     type: 'input',
     value: 'input',
     label: '输入框',
+    prefix: 'ios-contact',//输入框头部图标
+    suffix: 'ios-search',//	输入框尾部图标
     required: true,//是否必须项
     placeholder: '请输入'
 }

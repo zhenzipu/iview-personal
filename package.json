@@ -1,12 +1,12 @@
 {
-    "name": "iview-personal",
-    "version": "0.1.2",
+    "name": "tco-ui",
+    "version": "1.0.1",
     "description": "基于iview3.0封装UI组件",
-    "main": "lib/iviewPersonal.umd.min.js",
+    "main": "lib/tco-ui.umd.min.js",
     "keyword": "iview UI",
     "private": false,
     "scripts": {
-        "lib": "vue-cli-service build --target lib --name iview-personal --dest lib packages/index.js",
+        "lib": "vue-cli-service build --target lib --name tco-ui --dest lib packages/index.js",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
