@@ -52,7 +52,7 @@ export default {
                     type: 'select',
                     label: '下拉框',
                     value: 'select',
-                    required: true,
+                    // required: true,
                     clearable: true,
                     filterable: true,
                     defaultValue: '1',
@@ -73,7 +73,7 @@ export default {
                     label: '单选框',
                     value: 'radio',
                     defaultValue: '1',
-                    required: true,
+                    // required: true,
                     placeholder: '请选择',
                     data: [
                         {
@@ -92,14 +92,14 @@ export default {
                     label: '输入框',
                     prefix: 'ios-contact',
                     suffix: 'ios-search',
-                    required: true,
+                    // required: true,
                     placeholder: '请输入'
                 },
                 {
                     type: 'inputNumber',
                     value: 'inputNumber',
                     label: '数字输入框',
-                    required: true,
+                    // required: true,
                     placeholder: '请输入'
                 },
                 {
@@ -108,7 +108,7 @@ export default {
                     dateType: 'month',
                     value: 'begin',
                     format: 'yyyy-MM',
-                    required: true,
+                    // required: true,
                     placeholder: '选择开始时间',
                     limit: {
                         up: '2018-01-01 00:00:00'
@@ -121,7 +121,7 @@ export default {
                     dateType: 'month',
                     value: 'end',
                     format: 'yyyy-MM',
-                    required: true,
+                    // required: true,
                     placeholder: '选择结束时间',
                     limit: {
                         up: '2018-01-01 00:00:00',

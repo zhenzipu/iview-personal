@@ -184,13 +184,26 @@ export default {
 
         // 提交搜索框数据
         handleSubmit(name) {
-            this.$refs[name].validate(valid => {
-                if (valid) {
-                    this.$emit('handleFormSubmit', this.objFormData);
-                } else {
-                    this.$Message.error('搜索参数不符合规则!');
+            let bPass = true;
+            // 遍历props数组验证是否有规则验证,否则直接emit搜索参数
+            for (let index = 0; index < this.objData.length; index++) {
+                const element = this.objData[index];
+                if (element.required) {
+                    bPass = false;
+                    break;
                 }
-            });
+            }
+            if (bPass) {
+                this.$emit('handleFormSubmit', this.objFormData);
+            } else {
+                this.$refs[name].validate(valid => {
+                    if (valid) {
+                        this.$emit('handleFormSubmit', this.objFormData);
+                    } else {
+                        this.$Message.error('搜索参数不符合规则!');
+                    }
+                });
+            }
         },
 
         // 时间选择框变化触发
