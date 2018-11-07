@@ -14,7 +14,7 @@ h2 {
             <Panel name="1">
                 搜索框
                 <div slot="content">
-                    <search-form :objData="aSearch" :bhidLable="true" @handleFormSubmit="handleSearch"></search-form>
+                    <tco-form type="form" :objData="aSearch" :bhidLable="false" @handleFormSubmit="handleSearch"></tco-form>
                 </div>
             </Panel>
             <Panel name="2">
