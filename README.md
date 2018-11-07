@@ -8,9 +8,11 @@
 
 ```
 <tco-form 
-    type="form"
+    vertical
     :objData="aSearch" 
+    :objDefault="objDefault"
     :bhidLable="false"
+    btnName="试试"
     @handleFormSubmit="handleSearch"
     >
 </tco-form>
@@ -20,7 +22,9 @@
 ---|---|---|---
 objData | 显示的结构化数据 |  Array | []
 bhidLable | 是否显示label |  Boolean | true
-type | 表单类型 'form'/'search' |  String | 'search'
+vertical | 是否竖排 |  Boolean | false
+objDefault | 表单默认值 |  Object | {}
+btnName | 按钮文本 |  String | '提交'
 
 #### objData 
 > ==下拉框==
@@ -30,14 +34,16 @@ type | 表单类型 'form'/'search' |  String | 'search'
     type: 'select',
     label: '下拉框',
     value: 'select',
+    disabled:true,//是否禁用
     clearable: true,//是否可清除
     filterable: true,//是否可搜索
-    defaultValue: '1',//默认value
+    //defaultValue: '1',//默认value
     required: true,//是否必须项
     placeholder: '请选择',
     data: [
         {
             name: 'option1',
+            disabled:true,//是否禁用
             value: '1'
         },
         {
@@ -54,12 +60,13 @@ type | 表单类型 'form'/'search' |  String | 'search'
     type: 'radio',
     label: '单选框',
     value: 'radio',
-    defaultValue: '1',//默认value
+    //defaultValue: '1',//默认value
     required: true,//是否必须项
     placeholder: '请选择',
     data: [
         {
             name: 'check1',
+            disabled:true,//是否禁用
             value: '1'
         },
         {
@@ -76,6 +83,7 @@ type | 表单类型 'form'/'search' |  String | 'search'
     type: 'input',
     value: 'input',
     label: '输入框',
+    disabled:true,//是否禁用
     prefix: 'ios-contact',//输入框头部图标
     suffix: 'ios-search',//	输入框尾部图标
     required: true,//是否必须项
@@ -88,6 +96,7 @@ type | 表单类型 'form'/'search' |  String | 'search'
  {
     type: 'inputNumber',
     value: 'inputNumber',
+    disabled:true,//是否禁用
     label: '数字输入框',
     required: true,//是否必须项
     placeholder: '请输入'
@@ -99,6 +108,7 @@ type | 表单类型 'form'/'search' |  String | 'search'
 {
     type: 'date',
     label: '时间/日期',
+    disabled:true,//是否禁用
     dateType: 'month',//date、daterange、datetime、datetimerange、year、month
     value: 'end',//当type为datarange是value为数组[value1,value2]
     format: 'yyyy-MM',//date | daterange：yyyy-MM-dd、datetime | datetimerange：yyyy-MM-dd

@@ -14,7 +14,7 @@ h2 {
             <Panel name="1">
                 搜索框
                 <div slot="content">
-                    <tco-form type="form" :objData="aSearch" :bhidLable="false" @handleFormSubmit="handleSearch"></tco-form>
+                    <tco-form vertical btnName="看看" :objData="aSearch" :objDefault="objDefault" :bhidLable="false" @handleFormSubmit="handleSearch"></tco-form>
                 </div>
             </Panel>
             <Panel name="2">
@@ -47,19 +47,27 @@ export default {
     data() {
         return {
             defaultName: '1',
+            objDefault: {
+                inputNumber: 4,
+                input: 'dddddd',
+                radio: '2',
+                select: '1'
+            },
             aSearch: [
                 {
                     type: 'select',
                     label: '下拉框',
                     value: 'select',
+                    // disabled:true,
                     // required: true,
                     clearable: true,
                     filterable: true,
-                    defaultValue: '1',
+                    // defaultValue: '1',
                     placeholder: '请选择',
                     data: [
                         {
                             name: 'option1',
+                    disabled:true,
                             value: '1'
                         },
                         {
@@ -72,12 +80,13 @@ export default {
                     type: 'radio',
                     label: '单选框',
                     value: 'radio',
-                    defaultValue: '1',
+                    // defaultValue: '1',
                     // required: true,
                     placeholder: '请选择',
                     data: [
                         {
                             name: 'check1',
+                    disabled:true,
                             value: '1'
                         },
                         {
@@ -89,6 +98,7 @@ export default {
                 {
                     type: 'input',
                     value: 'input',
+                    disabled:true,
                     label: '输入框',
                     prefix: 'ios-contact',
                     suffix: 'ios-search',
@@ -98,6 +108,7 @@ export default {
                 {
                     type: 'inputNumber',
                     value: 'inputNumber',
+                    disabled:true,
                     label: '数字输入框',
                     // required: true,
                     placeholder: '请输入'
@@ -105,6 +116,7 @@ export default {
                 {
                     type: 'date',
                     label: '开始时间',
+                    disabled:true,
                     dateType: 'month',
                     value: 'begin',
                     format: 'yyyy-MM',
@@ -118,6 +130,7 @@ export default {
                 {
                     type: 'date',
                     label: '结束时间',
+                    disabled:true,
                     dateType: 'month',
                     value: 'end',
                     format: 'yyyy-MM',
