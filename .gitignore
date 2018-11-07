@@ -1,12 +1,14 @@
 # ---push to git
 /node_modules
-/lib
+lib/
+dist/
 
 # ---publish to npm
 # examples/
 # node_modules/
 # packages/
 # public/
+# dist/
 
 vue.config.js
 babel.config.js

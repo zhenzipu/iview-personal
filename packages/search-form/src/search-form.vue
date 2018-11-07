@@ -27,12 +27,12 @@
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='input'">
-                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur'}:null">
                         <Input v-model="objFormData[item.value]" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
                     </FormItem>
                 </div>
                 <div v-else-if="item.type=='inputNumber'">
-                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
+                    <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！',type:'number'}:null">
                         <InputNumber :min="1" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                     </FormItem>
                 </div>
@@ -65,12 +65,12 @@
                 </FormItem>
             </div>
             <div v-else-if="item.type=='input'">
-                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'input'}:null">
-                    <Input v-model="objFormData[item.value]" :placeholder="item.placeholder" clearable></Input>
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur'}:null">
+                    <Input v-model="objFormData[item.value]" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
                 </FormItem>
             </div>
             <div v-else-if="item.type=='inputNumber'">
-                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur',type:'number'}:null">
+                <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！',type:'number'}:null">
                     <InputNumber :min="1" v-model="objFormData[item.value]" :placeholder="item.placeholder"></InputNumber>
                 </FormItem>
             </div>
