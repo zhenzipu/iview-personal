@@ -7,7 +7,7 @@
 }
 </style>
 <template>
-    <Form ref="submitForm" autocomplete="on" :model="objFormData" :label-width="bhidLable?null:100">
+    <Form ref="submitForm" autocomplete="on" :model="objFormData" :label-width="bhidLable?null:labelWidth">
         <template v-if="vertical">
             <div v-for="(item,index) in objData" :key="index">
                 <template v-if="item.type=='select'">
@@ -31,7 +31,7 @@
                 </template>
                 <template v-else-if="item.type=='input'">
                     <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur'}:null">
-                        <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
+                        <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" :clearable="item.clearable"></Input>
                     </FormItem>
                 </template>
                 <template v-else-if="item.type=='inputNumber'">
@@ -71,7 +71,7 @@
                     </template>
                     <template v-else-if="item.type=='input'">
                         <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur'}:null">
-                            <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
+                            <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" :clearable="item.clearable"></Input>
                         </FormItem>
                     </template>
                     <template v-else-if="item.type=='inputNumber'">
@@ -109,7 +109,7 @@
                 </template>
                 <template v-else-if="item.type=='input'">
                     <FormItem :label="bhidLable?null:item.label" :prop="item.required?item.value:null" :rules="item.required?{required: true, message: item.label +'不能为空！', trigger: 'blur'}:null">
-                        <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" clearable></Input>
+                        <Input v-model="objFormData[item.value]" :disabled="item.disabled" :prefix="item.prefix||''" :suffix="item.suffix||''" :placeholder="item.placeholder" :clearable="item.clearable"></Input>
                     </FormItem>
                 </template>
                 <template v-else-if="item.type=='inputNumber'">
@@ -137,8 +137,12 @@ export default {
         objData: Array,
         bhidLable: Boolean,
         btnName: {
-            type:String,
-            default:'提交'
+            type: String,
+            default: '提交'
+        },
+        labelWidth: {
+            type: Number,
+            default: 100
         },
         objDefault: Object,
         vertical: {
@@ -168,7 +172,7 @@ export default {
         handleSelectChange(value, key) {
             this.objFormData[key] = value;
         },
-        
+
         // 时间范围限制
         dateLimit(limit) {
             return {

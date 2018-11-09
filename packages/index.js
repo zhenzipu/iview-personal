@@ -3,9 +3,10 @@ import tcoForm from './tco-form';
 import tablePaging from './table-paging';
 import tableCombine from './table-combine';
 import tableEdit from './table-edit';
+import tcoTree from './tco-tree';
 
 // 存储组件列表
-const components = [tcoForm, tablePaging, tableCombine,tableEdit];
+const components = [tcoForm, tablePaging, tableCombine, tableEdit, tcoTree];
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue) {
@@ -27,5 +28,6 @@ export default {
     tcoForm,
     tablePaging,
     tableCombine,
-    tableEdit
+    tableEdit,
+    tcoTree
 };

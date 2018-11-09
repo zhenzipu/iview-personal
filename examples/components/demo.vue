@@ -14,7 +14,7 @@ h2 {
             <Panel name="1">
                 搜索框
                 <div slot="content">
-                    <tco-form vertical btnName="看看" :objData="aSearch" :objDefault="objDefault" :bhidLable="false" @handleFormSubmit="handleSearch"></tco-form>
+                    <tco-form vertical btnName="看看" :objData="aSearch" :objDefault="objDefault" :bhidLable="false" :labelWidth="90" @handleFormSubmit="handleSearch"></tco-form>
                 </div>
             </Panel>
             <Panel name="2">
@@ -30,10 +30,16 @@ h2 {
                 </div>
             </Panel>
             <Panel name="4">
-                合并table
+                编辑table
                 <div slot="content">
                     <table-edit :columns="aTableColumnsEdit" :data="aTableDataEdit" :border="true" :disHover="true"></table-edit>
                     <Button @click="handleLook">控制台查看数据</Button>
+                </div>
+            </Panel>
+            <Panel name="5">
+                组织结构树
+                <div slot="content">
+                    <tco-tree :objData="aTreeData" :objDefaultKey="objDefaultKey" @selectNode="selectNode"></tco-tree>
                 </div>
             </Panel>
         </Collapse>
@@ -46,7 +52,7 @@ export default {
     props: {},
     data() {
         return {
-            defaultName: '1',
+            defaultName: '5',
             objDefault: {
                 inputNumber: 4,
                 input: 'dddddd',
@@ -67,7 +73,7 @@ export default {
                     data: [
                         {
                             name: 'option1',
-                    disabled:true,
+                            disabled: true,
                             value: '1'
                         },
                         {
@@ -86,7 +92,7 @@ export default {
                     data: [
                         {
                             name: 'check1',
-                    disabled:true,
+                            disabled: true,
                             value: '1'
                         },
                         {
@@ -98,7 +104,8 @@ export default {
                 {
                     type: 'input',
                     value: 'input',
-                    disabled:true,
+                    disabled: true,
+                    clearable: true,
                     label: '输入框',
                     prefix: 'ios-contact',
                     suffix: 'ios-search',
@@ -108,7 +115,7 @@ export default {
                 {
                     type: 'inputNumber',
                     value: 'inputNumber',
-                    disabled:true,
+                    disabled: true,
                     label: '数字输入框',
                     // required: true,
                     placeholder: '请输入'
@@ -116,7 +123,7 @@ export default {
                 {
                     type: 'date',
                     label: '开始时间',
-                    disabled:true,
+                    disabled: true,
                     dateType: 'month',
                     value: 'begin',
                     format: 'yyyy-MM',
@@ -130,7 +137,7 @@ export default {
                 {
                     type: 'date',
                     label: '结束时间',
-                    disabled:true,
+                    disabled: true,
                     dateType: 'month',
                     value: 'end',
                     format: 'yyyy-MM',
@@ -228,7 +235,311 @@ export default {
                 total: 100,
                 pageSize: 10,
                 currentPage: 1
-            }
+            },
+            objDefaultKey: {
+                id: 'deptCode',
+                pId: 'parentCode',
+                name: 'deptName',
+                fullName: 'deptFullname',
+                level: 'deep',
+                expend: null
+            },
+            aTreeData: [
+                {
+                    deptFullname: '京东集团',
+                    deptName: '京东集团',
+                    deep: 0,
+                    parentCode: '',
+                    deptCode: '00000000'
+                },
+                {
+                    deptFullname: '资产管理-资源池',
+                    deptName: '资源池',
+                    deep: 3,
+                    parentCode: 'C2141',
+                    deptCode: 'C1'
+                },
+                {
+                    deptFullname: 'CCO体系',
+                    deptName: 'CCO体系',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00000872'
+                },
+                {
+                    deptFullname: '总裁办公室',
+                    deptName: '总裁办公室',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00010459'
+                },
+                {
+                    deptFullname: 'CHO&GC体系',
+                    deptName: 'CHO&GC体系',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00012544'
+                },
+                {
+                    deptFullname: 'CFO体系',
+                    deptName: 'CFO体系',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00012545'
+                },
+                {
+                    deptFullname: '京东金融',
+                    deptName: '京东金融',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00008987'
+                },
+                {
+                    deptFullname: '京东商城',
+                    deptName: '京东商城',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00013807'
+                },
+                {
+                    deptFullname: '京东到家',
+                    deptName: '京东到家',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00017156'
+                },
+                {
+                    deptFullname: '综合部',
+                    deptName: '综合部',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00018479'
+                },
+                {
+                    deptFullname: '保险业务筹备部',
+                    deptName: '保险业务筹备部',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00018996'
+                },
+                {
+                    deptFullname: 'CPO体系',
+                    deptName: 'CPO体系',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00018997'
+                },
+                {
+                    deptFullname: 'CTO体系',
+                    deptName: 'CTO体系',
+                    deep: 1,
+                    parentCode: '00000000',
+                    deptCode: '00020462'
+                },
+                {
+                    deptFullname: 'CCO体系-交易风险管理部',
+                    deptName: '交易风险管理部',
+                    deep: 2,
+                    parentCode: '00000872',
+                    deptCode: '00013505'
+                },
+                {
+                    deptFullname: 'CCO体系-办公室',
+                    deptName: '办公室',
+                    deep: 2,
+                    parentCode: '00000872',
+                    deptCode: '00000893'
+                },
+                {
+                    deptFullname: 'CCO体系-审计部',
+                    deptName: '审计部',
+                    deep: 2,
+                    parentCode: '00000872',
+                    deptCode: '00003123'
+                },
+                {
+                    deptFullname: 'CCO体系-监察部',
+                    deptName: '监察部',
+                    deep: 2,
+                    parentCode: '00000872',
+                    deptCode: '00003124'
+                },
+                {
+                    deptFullname: '京东物流-经营保障部',
+                    deptName: '经营保障部',
+                    deep: 2,
+                    parentCode: '00029430',
+                    deptCode: '00012113'
+                },
+                {
+                    deptFullname: 'CCO体系-合规技术研发部',
+                    deptName: '合规技术研发部',
+                    deep: 2,
+                    parentCode: '00000872',
+                    deptCode: '00016552'
+                },
+                {
+                    deptFullname: '总裁办公室-综合管理部',
+                    deptName: '综合管理部',
+                    deep: 2,
+                    parentCode: '00010459',
+                    deptCode: '00010461'
+                },
+                {
+                    deptFullname: '总裁办公室-会务部',
+                    deptName: '会务部',
+                    deep: 2,
+                    parentCode: '00010459',
+                    deptCode: '00016432'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-法务部',
+                    deptName: '法务部',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00000867'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-办公室',
+                    deptName: '办公室',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00005354'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-京东大学',
+                    deptName: '京东大学',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00007235'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-集团招采中心',
+                    deptName: '集团招采中心',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00008373'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-集团人力资源部',
+                    deptName: '集团人力资源部',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00017089'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-行政部',
+                    deptName: '行政部',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00017129'
+                },
+                {
+                    deptFullname: 'CHO&GC体系-海外HRBP部',
+                    deptName: '海外HRBP部',
+                    deep: 2,
+                    parentCode: '00012544',
+                    deptCode: '00024856'
+                },
+                {
+                    deptFullname: 'CFO体系-财务部',
+                    deptName: '财务部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00001099'
+                },
+                {
+                    deptFullname: 'CFO体系-预算与分析部',
+                    deptName: '预算与分析部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00007348'
+                },
+                {
+                    deptFullname: 'CFO体系-办公室',
+                    deptName: '办公室',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00007336'
+                },
+                {
+                    deptFullname: 'CFO体系-投资者关系部',
+                    deptName: '投资者关系部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00007349'
+                },
+                {
+                    deptFullname: 'CFO体系-报告部',
+                    deptName: '报告部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00007350'
+                },
+                {
+                    deptFullname: 'CFO体系-企业发展部',
+                    deptName: '企业发展部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00008970'
+                },
+                {
+                    deptFullname: 'CFO体系-税务与资金管理部',
+                    deptName: '税务与资金管理部',
+                    deep: 2,
+                    parentCode: '00012545',
+                    deptCode: '00011162'
+                },
+                {
+                    deptFullname: '京东金融-支付业务部',
+                    deptName: '支付业务部',
+                    deep: 2,
+                    parentCode: '00008987',
+                    deptCode: '00010490'
+                },
+                {
+                    deptFullname: '京东金融-金融科技业务部',
+                    deptName: '金融科技业务部',
+                    deep: 2,
+                    parentCode: '00008987',
+                    deptCode: '00012428'
+                },
+                {
+                    deptFullname: '京东金融-供应链金融部',
+                    deptName: '供应链金融部',
+                    deep: 2,
+                    parentCode: '00008987',
+                    deptCode: '00008995'
+                },
+                {
+                    deptFullname: '京东金融-个人服务群组-消费金融部',
+                    deptName: '消费金融部',
+                    deep: 3,
+                    parentCode: '00046966',
+                    deptCode: '00008998'
+                },
+                {
+                    deptFullname: '京东金融-个人服务群组-众筹业务部',
+                    deptName: '众筹业务部',
+                    deep: 3,
+                    parentCode: '00046966',
+                    deptCode: '00011398'
+                },
+                {
+                    deptFullname: '京东金融-个人服务群组-保险业务部',
+                    deptName: '保险业务部',
+                    deep: 3,
+                    parentCode: '00046966',
+                    deptCode: '00012139'
+                },
+                {
+                    deptFullname: '京东金融-个人服务群组-财富管理部',
+                    deptName: '财富管理部',
+                    deep: 3,
+                    parentCode: '00046966',
+                    deptCode: '00013360'
+                }
+            ]
         };
     },
     methods: {
@@ -246,6 +557,9 @@ export default {
         },
         handleLook() {
             console.log(11, this.aTableDataEdit);
+        },
+        selectNode(node){
+            console.log('node',node)
         }
     },
     mounted() {
