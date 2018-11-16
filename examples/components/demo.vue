@@ -42,6 +42,12 @@ h2 {
                     <tco-tree :objData="aTreeData" :objDefaultKey="objDefaultKey" @selectNode="selectNode"></tco-tree>
                 </div>
             </Panel>
+            <Panel name="6">
+                上传组件
+                <div slot="content">
+                    <tco-upload name="uploadName" action="//jsonplaceholder.typicode.com/posts/" :format="[]" :on-success="uploadSuccess"></tco-upload>
+                </div>
+            </Panel>
         </Collapse>
     </div>
 </template>
@@ -558,8 +564,17 @@ export default {
         handleLook() {
             console.log(11, this.aTableDataEdit);
         },
-        selectNode(node){
-            console.log('node',node)
+        selectNode(node) {
+            console.log('node', node);
+        },
+        // 上传成功
+        uploadSuccess(evnet, file) {
+            console.log('event', event);
+            console.log('file', file);
+            this.$Notice.success({
+                title: '文件上传成功',
+                desc: '文件 ' + file.name + ' 上传成功。'
+            });
         }
     },
     mounted() {
