@@ -248,7 +248,7 @@ export default {
                 name: 'deptName',
                 fullName: 'deptFullname',
                 level: 'deep',
-                expend: null
+                expand: 'expand'
             },
             aTreeData: [
                 {
@@ -256,7 +256,8 @@ export default {
                     deptName: '京东集团',
                     deep: 0,
                     parentCode: '',
-                    deptCode: '00000000'
+                    deptCode: '00000000',
+                    expand:true
                 },
                 {
                     deptFullname: '资产管理-资源池',

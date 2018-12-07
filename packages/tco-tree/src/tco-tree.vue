@@ -19,7 +19,7 @@ export default {
                     name: 'name',
                     fullName: 'fullName',
                     level: 'level',
-                    expend: false
+                    expand: 'expand'
                 };
             }
         }
@@ -124,7 +124,7 @@ export default {
                 node.title = item[keys.name];
                 node.fullName = item[keys.fullName]||null;
                 node.level = item[keys.level];
-                node.expend = item[keys.expend]||false;
+                node.expand = item[keys.expand]||false;
                 node.children = [];
                 objNode[node.id] = node;
             });
