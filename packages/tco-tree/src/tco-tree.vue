@@ -139,7 +139,7 @@ export default {
         }
     },
     mounted() {
-        this.updateTree();
+        // this.updateTree();
     }
 };
 </script>
