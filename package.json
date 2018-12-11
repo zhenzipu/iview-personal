@@ -1,6 +1,6 @@
 {
     "name": "tco-ui",
-    "version": "1.1.9",
+    "version": "1.2.0",
     "description": "基于iview3.0封装UI组件",
     "main": "lib/tco-ui.umd.min.js",
     "keyword": "iview UI",

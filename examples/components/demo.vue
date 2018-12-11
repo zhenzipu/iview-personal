@@ -277,10 +277,11 @@ export default {
         currentPage: 1
       },
       objDefaultKey: {
-        id: "deptCode",
-        pId: "parentCode",
-        name: "deptName",
-        fullName: "deptFullname",
+        id: "organization_code",
+        pId: "parent_organization_code",
+        path: "organization_fullpath",
+        name: "organization_name",
+        fullName: "organization_fullname",
         level: "deep",
         expand: "expand"
       },
@@ -343,299 +344,365 @@ export default {
       ];
       this.aTreeData = [
         {
-          deptFullname: "京东集团",
-          deptName: "京东集团",
+          organization_code: "00000000",
+          parent_organization_code: "00000000",
+          organization_name: "京东集团",
+          organization_fullname: "京东集团",
+          organization_fullpath: "/00000000",
+          has_child_department: 1,
+          expand:true,
           deep: 0,
-          parentCode: "",
-          deptCode: "00000000",
-          expand: true
+          open: 1
         },
         {
-          deptFullname: "资产管理-资源池",
-          deptName: "资源池",
+          organization_code: "C1",
+          parent_organization_code: "C2141",
+          organization_name: "资源池",
+          organization_fullname: "资产管理-资源池",
+          organization_fullpath: "/000000000/C2141/C1",
+          has_child_department: 0,
           deep: 3,
-          parentCode: "C2141",
-          deptCode: "C1"
+          open: 0
         },
         {
-          deptFullname: "CCO体系",
-          deptName: "CCO体系",
+          organization_code: "00000872",
+          parent_organization_code: "00000000",
+          organization_name: "内控合规部",
+          organization_fullname: "内控合规部",
+          organization_fullpath: "/00000000/00000872",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00000872"
+          open: 0
         },
         {
-          deptFullname: "总裁办公室",
-          deptName: "总裁办公室",
+          organization_code: "00010459",
+          parent_organization_code: "00000000",
+          organization_name: "总裁办公室",
+          organization_fullname: "总裁办公室",
+          organization_fullpath: "/00000000/00010459",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00010459"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系",
-          deptName: "CHO&GC体系",
+          organization_code: "00012544",
+          parent_organization_code: "00000000",
+          organization_name: "CHO&GC体系",
+          organization_fullname: "CHO&GC体系",
+          organization_fullpath: "/00000000/00012544",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00012544"
+          open: 0
         },
         {
-          deptFullname: "CFO体系",
-          deptName: "CFO体系",
+          organization_code: "00012545",
+          parent_organization_code: "00000000",
+          organization_name: "CFO体系",
+          organization_fullname: "CFO体系",
+          organization_fullpath: "/00000000/00012545",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00012545"
+          open: 0
         },
         {
-          deptFullname: "京东金融",
-          deptName: "京东金融",
+          organization_code: "00008987",
+          parent_organization_code: "00000000",
+          organization_name: "京东金融",
+          organization_fullname: "京东金融",
+          organization_fullpath: "/00000000/00008987",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00008987"
+          open: 0
         },
         {
-          deptFullname: "京东商城",
-          deptName: "京东商城",
+          organization_code: "00013807",
+          parent_organization_code: "00000000",
+          organization_name: "京东商城",
+          organization_fullname: "京东商城",
+          organization_fullpath: "/00000000/00013807",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00013807"
+          open: 0
         },
         {
-          deptFullname: "京东到家",
-          deptName: "京东到家",
+          organization_code: "00017156",
+          parent_organization_code: "00000000",
+          organization_name: "京东到家",
+          organization_fullname: "京东到家",
+          organization_fullpath: "/00000000/00017156",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00017156"
+          open: 0
         },
         {
-          deptFullname: "综合部",
-          deptName: "综合部",
+          organization_code: "00018479",
+          parent_organization_code: "00000000",
+          organization_name: "综合部",
+          organization_fullname: "综合部",
+          organization_fullpath: "/00000000/00018479",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00018479"
+          open: 0
         },
         {
-          deptFullname: "保险业务筹备部",
-          deptName: "保险业务筹备部",
+          organization_code: "00018996",
+          parent_organization_code: "00000000",
+          organization_name: "保险业务筹备部",
+          organization_fullname: "保险业务筹备部",
+          organization_fullpath: "/00000000/00018996",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00018996"
+          open: 0
         },
         {
-          deptFullname: "CPO体系",
-          deptName: "CPO体系",
+          organization_code: "00018997",
+          parent_organization_code: "00000000",
+          organization_name: "CPO体系",
+          organization_fullname: "CPO体系",
+          organization_fullpath: "/00000000/00018997",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00018997"
+          open: 0
         },
         {
-          deptFullname: "CTO体系",
-          deptName: "CTO体系",
+          organization_code: "00020462",
+          parent_organization_code: "00000000",
+          organization_name: "CTO体系",
+          organization_fullname: "CTO体系",
+          organization_fullpath: "/00000000/00020462",
+          has_child_department: 1,
           deep: 1,
-          parentCode: "00000000",
-          deptCode: "00020462"
+          open: 0
         },
         {
-          deptFullname: "CCO体系-交易风险管理部",
-          deptName: "交易风险管理部",
+          organization_code: "00013505",
+          parent_organization_code: "00000872",
+          organization_name: "交易风险管理部",
+          organization_fullname: "内控合规部-交易风险管理部",
+          organization_fullpath: "/00000000/00000872/00013505",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00000872",
-          deptCode: "00013505"
+          open: 0
         },
         {
-          deptFullname: "CCO体系-办公室",
-          deptName: "办公室",
+          organization_code: "00000893",
+          parent_organization_code: "00000872",
+          organization_name: "办公室",
+          organization_fullname: "内控合规部-办公室",
+          organization_fullpath: "/00000000/00000872/00000893",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00000872",
-          deptCode: "00000893"
+          open: 0
         },
         {
-          deptFullname: "CCO体系-审计部",
-          deptName: "审计部",
+          organization_code: "00003123",
+          parent_organization_code: "00000872",
+          organization_name: "审计部",
+          organization_fullname: "内控合规部-审计部",
+          organization_fullpath: "/00000000/00000872/00003123",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00000872",
-          deptCode: "00003123"
+          open: 0
         },
         {
-          deptFullname: "CCO体系-监察部",
-          deptName: "监察部",
+          organization_code: "00003124",
+          parent_organization_code: "00000872",
+          organization_name: "监察部",
+          organization_fullname: "内控合规部-监察部",
+          organization_fullpath: "/00000000/00000872/00003124",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00000872",
-          deptCode: "00003124"
+          open: 0
         },
         {
-          deptFullname: "京东物流-经营保障部",
-          deptName: "经营保障部",
+          organization_code: "00012113",
+          parent_organization_code: "00029430",
+          organization_name: "经营保障部",
+          organization_fullname: "京东物流-经营保障部",
+          organization_fullpath: "/00000000/00029430/00012113",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00029430",
-          deptCode: "00012113"
+          open: 0
         },
         {
-          deptFullname: "CCO体系-合规技术研发部",
-          deptName: "合规技术研发部",
+          organization_code: "00016552",
+          parent_organization_code: "00000872",
+          organization_name: "合规技术研发部",
+          organization_fullname: "内控合规部-合规技术研发部",
+          organization_fullpath: "/00000000/00000872/00016552",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00000872",
-          deptCode: "00016552"
+          open: 0
         },
         {
-          deptFullname: "总裁办公室-综合管理部",
-          deptName: "综合管理部",
+          organization_code: "00010461",
+          parent_organization_code: "00010459",
+          organization_name: "综合管理部",
+          organization_fullname: "总裁办公室-综合管理部",
+          organization_fullpath: "/00000000/00010459/00010461",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00010459",
-          deptCode: "00010461"
+          open: 0
         },
         {
-          deptFullname: "总裁办公室-会务部",
-          deptName: "会务部",
+          organization_code: "00016432",
+          parent_organization_code: "00010459",
+          organization_name: "会务部",
+          organization_fullname: "总裁办公室-会务部",
+          organization_fullpath: "/00000000/00010459/00016432",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00010459",
-          deptCode: "00016432"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-法务部",
-          deptName: "法务部",
+          organization_code: "00000867",
+          parent_organization_code: "00012544",
+          organization_name: "法务部",
+          organization_fullname: "CHO&GC体系-法务部",
+          organization_fullpath: "/00000000/00012544/00000867",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00000867"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-办公室",
-          deptName: "办公室",
+          organization_code: "00005354",
+          parent_organization_code: "00012544",
+          organization_name: "办公室",
+          organization_fullname: "CHO&GC体系-办公室",
+          organization_fullpath: "/00000000/00012544/00005354",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00005354"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-京东大学",
-          deptName: "京东大学",
+          organization_code: "00007235",
+          parent_organization_code: "00012544",
+          organization_name: "京东大学",
+          organization_fullname: "CHO&GC体系-京东大学",
+          organization_fullpath: "/00000000/00012544/00007235",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00007235"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-集团招采中心",
-          deptName: "集团招采中心",
+          organization_code: "00008373",
+          parent_organization_code: "00012544",
+          organization_name: "集团招采中心",
+          organization_fullname: "CHO&GC体系-集团招采中心",
+          organization_fullpath: "/00000000/00012544/00008373",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00008373"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-集团人力资源部",
-          deptName: "集团人力资源部",
+          organization_code: "00017089",
+          parent_organization_code: "00012544",
+          organization_name: "人力资源部",
+          organization_fullname: "CHO&GC体系-人力资源部",
+          organization_fullpath: "/00000000/00012544/00017089",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00017089"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-行政部",
-          deptName: "行政部",
+          organization_code: "00017129",
+          parent_organization_code: "00012544",
+          organization_name: "行政部",
+          organization_fullname: "CHO&GC体系-行政部",
+          organization_fullpath: "/00000000/00012544/00017129",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00017129"
+          open: 0
         },
         {
-          deptFullname: "CHO&GC体系-海外HRBP部",
-          deptName: "海外HRBP部",
+          organization_code: "00024856",
+          parent_organization_code: "00012544",
+          organization_name: "海外HRBP部",
+          organization_fullname: "CHO&GC体系-海外HRBP部",
+          organization_fullpath: "/00000000/00012544/00024856",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012544",
-          deptCode: "00024856"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-财务部",
-          deptName: "财务部",
+          organization_code: "00001099",
+          parent_organization_code: "00012545",
+          organization_name: "财务部",
+          organization_fullname: "CFO体系-财务部",
+          organization_fullpath: "/00000000/00012545/00001099",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00001099"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-预算与分析部",
-          deptName: "预算与分析部",
+          organization_code: "00007348",
+          parent_organization_code: "00012545",
+          organization_name: "预算与分析部",
+          organization_fullname: "CFO体系-预算与分析部",
+          organization_fullpath: "/00000000/00012545/00007348",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00007348"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-办公室",
-          deptName: "办公室",
+          organization_code: "00007336",
+          parent_organization_code: "00012545",
+          organization_name: "办公室",
+          organization_fullname: "CFO体系-办公室",
+          organization_fullpath: "/00000000/00012545/00007336",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00007336"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-投资者关系部",
-          deptName: "投资者关系部",
+          organization_code: "00007349",
+          parent_organization_code: "00012545",
+          organization_name: "投资者关系部",
+          organization_fullname: "CFO体系-投资者关系部",
+          organization_fullpath: "/00000000/00012545/00007349",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00007349"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-报告部",
-          deptName: "报告部",
+          organization_code: "00007350",
+          parent_organization_code: "00012545",
+          organization_name: "报告部",
+          organization_fullname: "CFO体系-报告部",
+          organization_fullpath: "/00000000/00012545/00007350",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00007350"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-企业发展部",
-          deptName: "企业发展部",
+          organization_code: "00008970",
+          parent_organization_code: "00012545",
+          organization_name: "企业发展部",
+          organization_fullname: "CFO体系-企业发展部",
+          organization_fullpath: "/00000000/00012545/00008970",
+          has_child_department: 0,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00008970"
+          open: 0
         },
         {
-          deptFullname: "CFO体系-税务与资金管理部",
-          deptName: "税务与资金管理部",
+          organization_code: "00011162",
+          parent_organization_code: "00012545",
+          organization_name: "税务与资金管理部",
+          organization_fullname: "CFO体系-税务与资金管理部",
+          organization_fullpath: "/00000000/00012545/00011162",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00012545",
-          deptCode: "00011162"
+          open: 0
         },
         {
-          deptFullname: "京东金融-支付业务部",
-          deptName: "支付业务部",
+          organization_code: "00010490",
+          parent_organization_code: "00008987",
+          organization_name: "支付业务部",
+          organization_fullname: "京东金融-支付业务部",
+          organization_fullpath: "/00000000/00008987/00010490",
+          has_child_department: 1,
           deep: 2,
-          parentCode: "00008987",
-          deptCode: "00010490"
-        },
-        {
-          deptFullname: "京东金融-金融科技业务部",
-          deptName: "金融科技业务部",
-          deep: 2,
-          parentCode: "00008987",
-          deptCode: "00012428"
-        },
-        {
-          deptFullname: "京东金融-供应链金融部",
-          deptName: "供应链金融部",
-          deep: 2,
-          parentCode: "00008987",
-          deptCode: "00008995"
-        },
-        {
-          deptFullname: "京东金融-个人服务群组-消费金融部",
-          deptName: "消费金融部",
-          deep: 3,
-          parentCode: "00046966",
-          deptCode: "00008998"
-        },
-        {
-          deptFullname: "京东金融-个人服务群组-众筹业务部",
-          deptName: "众筹业务部",
-          deep: 3,
-          parentCode: "00046966",
-          deptCode: "00011398"
-        },
-        {
-          deptFullname: "京东金融-个人服务群组-保险业务部",
-          deptName: "保险业务部",
-          deep: 3,
-          parentCode: "00046966",
-          deptCode: "00012139"
-        },
-        {
-          deptFullname: "京东金融-个人服务群组-财富管理部",
-          deptName: "财富管理部",
-          deep: 3,
-          parentCode: "00046966",
-          deptCode: "00013360"
+          open: 0
         }
       ];
     }, 500);
