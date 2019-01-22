@@ -115,6 +115,7 @@ export default {
       );
     },
     updateTree() {
+      this.aServerTree = [];
       let keys = this.objDefaultKey;
       let objNode = {};
       this.objData.map(item => {
