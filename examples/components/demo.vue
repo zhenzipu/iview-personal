@@ -78,7 +78,6 @@ h2 {
             name="uploadName"
             action="//jsonplaceholder.typicode.com/posts/"
             :format="[]"
-            :data="{a:'sdf'}"
             :on-success="uploadSuccess"
           ></tco-upload>
         </div>
