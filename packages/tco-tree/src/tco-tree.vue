@@ -1,7 +1,12 @@
 <style scoped>
 </style>
 <template>
-    <Tree class="tco-tree" :data="aServerTree" @on-select-change="treeSelectChange" :render="renderContent"></Tree>
+  <Tree
+    class="tco-tree"
+    :data="aServerTree"
+    @on-select-change="treeSelectChange"
+    :render="renderContent"
+  ></Tree>
 </template>
 <script>
 export default {
@@ -29,6 +34,28 @@ export default {
             aServerTree: [],
             strCurrentNodeId: '',
         };
+      }
+    }
+  },
+  data() {
+    return {
+      aServerTree: [],
+      strCurrentNodeId: ""
+    };
+  },
+  watch: {
+    objData: {
+      handler() {
+        this.updateTree();
+      },
+      deep: true
+    }
+  },
+  methods: {
+    // 获取选中节点ID
+    treeSelectChange(node) {
+      this.strCurrentNodeId = node["id"];
+      this.$emit("selectNode", node);
     },
     watch: {
         objData: {

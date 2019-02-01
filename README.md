@@ -1,4 +1,4 @@
-# iview-personal
+# tco-ui
 基于iview3封装多功能组件
 
 
@@ -239,7 +239,6 @@ edit: {
 
 5.组织结构树
 
-> ==columns增加属性==
 
 属性 | 说明 | 类型 | 默认值
 ---|---|---|---
@@ -268,7 +267,7 @@ selectNode | 选中组织结构 | node包含节点所有信息
     name: 'name',
     fullName: 'fullName',
     level: 'level',
-    expend: false
+    expand: 'expand'
 }
 
 
@@ -278,7 +277,8 @@ aTreeData: [
         deptName: '京东集团',
         deep: 0,
         parentCode: '',
-        deptCode: '333'
+        deptCode: '333',
+        expand:true
     },
     {
         deptFullname: '资产管理-资源池',
@@ -306,6 +306,41 @@ objDefaultKey: {
     level: 'deep',
     expend: null
 },
+```
+
+6.上传组件
+
+
+属性 | 说明 | 类型 | 默认值
+---|---|---|---
+name | 上传的文件字段名 |  String | file_key
+action | 上传的地址，必填 |  String | ---
+format | 支持的文件类型 |  Array | []
+
+```
+<tco-upload 
+    name="uploadName" action="//jsonplaceholder.typicode.com/posts/" 
+    :format="['csv']" 
+    :on-success="uploadSuccess"
+></tco-upload>
+```
+#### upload events
+
+事件名 | 说明 | 返回值
+---|---|---
+uploadSuccess | 上传成功 | （event，file）
+
+```
+
+// 上传成功
+uploadSuccess(evnet, file) {
+    console.log('event', event);
+    console.log('file', file);
+    this.$Notice.success({
+        title: '文件上传成功',
+        desc: '文件 ' + file.name + ' 上传成功。'
+    });
+}
 ```
 
 
