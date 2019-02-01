@@ -1,48 +1,49 @@
 {
-    "name": "tco-ui",
-    "version": "1.1.6",
-    "description": "基于iview3.0封装UI组件",
-    "main": "lib/tco-ui.umd.min.js",
-    "keyword": "iview UI",
-    "private": false,
-    "scripts": {
-        "lib": "vue-cli-service build --target lib --name tco-ui --dest lib packages/index.js",
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "tco-ui",
+  "version": "1.1.6",
+  "description": "基于iview3.0封装UI组件",
+  "main": "lib/tco-ui.umd.min.js",
+  "keyword": "iview UI",
+  "private": false,
+  "scripts": {
+    "lib": "vue-cli-service build --target lib --name tco-ui --dest lib packages/index.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "iview": "^3.1.3",
+    "vue": "^2.5.17",
+    "webpack": "^4.29.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "iview": "^3.1.3",
-        "vue": "^2.5.17"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.0.5",
-        "@vue/cli-plugin-eslint": "^3.0.5",
-        "@vue/cli-service": "^3.0.5",
-        "vue-template-compiler": "^2.5.17"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "rules": {},
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
-    },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ]
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

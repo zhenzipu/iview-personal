@@ -19,15 +19,15 @@ export default {
                     name: 'name',
                     fullName: 'fullName',
                     level: 'level',
-                    expend: false
+                    expend: false,
                 };
-            }
-        }
+            },
+        },
     },
     data() {
         return {
             aServerTree: [],
-            strCurrentNodeId: ''
+            strCurrentNodeId: '',
         };
     },
     watch: {
@@ -35,8 +35,8 @@ export default {
             handler() {
                 this.updateTree();
             },
-            deep: true
-        }
+            deep: true,
+        },
     },
     methods: {
         // 获取选中节点ID
@@ -67,7 +67,7 @@ export default {
 
             var nodeSelectedClassName = '';
             // 当前选中的节点的css-class控制
-            if (parseInt(data.id) === parseInt(this.strCurrentNodeId)) {
+            if (data.id == this.strCurrentNodeId) {
                 nodeSelectedClassName = 'ivu-tree-title-selected';
             }
             return h(
@@ -75,8 +75,8 @@ export default {
                 {
                     style: {
                         display: 'inline-block',
-                        width: '100%'
-                    }
+                        width: '100%',
+                    },
                 },
                 [
                     h('span', [
@@ -84,47 +84,45 @@ export default {
                             props: {
                                 type: icon,
                                 size: icon_size,
-                                color: icon_color
+                                color: icon_color,
                             },
                             style: {
-                                marginRight: '1px'
-                            }
+                                marginRight: '1px',
+                            },
                         }),
                         h(
                             'span',
                             {
                                 attrs: {
-                                    class:
-                                        'ivu-tree-title ' +
-                                        nodeSelectedClassName
+                                    class: 'ivu-tree-title ' + nodeSelectedClassName,
                                 },
                                 on: {
                                     click: (root, data) => {
                                         let currentnode = arguments[1].node;
                                         this.treeSelectChange(currentnode.node);
-                                    }
-                                }
+                                    },
+                                },
                             },
-                            data.title
-                        )
-                    ])
-                ]
+                            data.title,
+                        ),
+                    ]),
+                ],
             );
         },
         updateTree() {
             let keys = this.objDefaultKey;
             let objNode = {};
-            this.objData.map(item => {
+            this.objData.map((item) => {
                 let node = {};
                 node.id = item[keys.id];
                 node.pId = item[keys.pId];
-                node.path = item[keys.path]||null;
-                node.pPath = item[keys.pPath]||null;
+                node.path = item[keys.path] || null;
+                node.pPath = item[keys.pPath] || null;
                 node.name = item[keys.name];
                 node.title = item[keys.name];
-                node.fullName = item[keys.fullName]||null;
+                node.fullName = item[keys.fullName] || null;
                 node.level = item[keys.level];
-                node.expend = item[keys.expend]||false;
+                node.expend = item[keys.expend] || false;
                 node.children = [];
                 objNode[node.id] = node;
             });
@@ -136,10 +134,10 @@ export default {
                 }
             }
             this.aServerTree.push(objNode[this.objData[0][keys.id]]);
-        }
+        },
     },
     mounted() {
         this.updateTree();
-    }
+    },
 };
 </script>
