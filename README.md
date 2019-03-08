@@ -1,7 +1,13 @@
 # tco-ui
 基于iview3封装多功能组件
+###### # 使用效果
+![image](https://raw.githubusercontent.com/zhenzipu/tco-ui/master/examples/assets/a.gif)
+###### 使用方法
+npm install tco-ui
 
+import tcoUi from 'tco-ui';
 
+Vue.use(tcoUi);
 
 1. 搜索表单
     支持下拉框、输入框、数字输入口、单选框、时间日期选择框搜索功能
