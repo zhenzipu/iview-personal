@@ -2,6 +2,7 @@
 基于iview3封装多功能组件
 ###### # 使用效果
 ![image](https://raw.githubusercontent.com/zhenzipu/tco-ui/master/examples/assets/a.gif)
+项目地址：[github](https://github.com/zhenzipu/tco-ui)
 ###### 使用方法
 npm install tco-ui
 
