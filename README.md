@@ -349,5 +349,112 @@ uploadSuccess(evnet, file) {
     });
 }
 ```
+7. 搜索表单-单个触发
+    支持下拉框、输入框、数字输入口、单选框、时间日期选择框搜索功能
 
+```
+<tco-form-single
+:labelWidth="65"
+:objDefault="objDefaultSingle"
+:objData="objSearchSingle"
+@fetchParams="handleFetchData"
+/>
+```
+#### tco-form prpps
+属性 | 说明 | 类型 | 默认值
+---|---|---|---
+objData | 显示的结构化数据 |  Array | []
+objDefault | 表单默认值 |  Object | {}
+labelWidth | label宽度 |  Number | 100
+
+#### objData 
+> ==下拉框==
+
+```
+{
+  type: "select",
+  label: "下拉框",
+  value: "select",
+  clearable: true, //是否可清除
+  filterable: true, //是否可搜索
+  placeholder: "请选择",
+  data: [
+    {
+      name: "option1",
+      value: "1"
+    },
+    {
+      name: "option2",
+      value: "2"
+    }
+  ]
+}
+```
+> ==单选框==
+
+```
+ {
+  type: "radio",
+  label: "单选框",
+  value: "radio",
+  placeholder: "请选择",
+  data: [
+    {
+      name: "check1",
+      value: "1"
+    },
+    {
+      name: "check2",
+      value: "2"
+    }
+  ]
+}
+```
+> ==输入框==
+
+```
+ {
+    type: 'input',
+    value: 'input',
+    label: '输入框',
+    disabled:true,//是否禁用
+    prefix: 'ios-contact',//输入框头部图标
+    suffix: 'ios-search',//	输入框尾部图标
+    placeholder: '请输入'
+}
+```
+> ==数字输入框==
+
+```
+ {
+    type: 'inputNumber',
+    value: 'inputNumber',
+    disabled:true,//是否禁用
+    label: '数字输入框',
+    placeholder: '请输入'
+}
+```
+> ==时间、日期选择器==
+
+```
+{
+    type: 'date',
+    label: '时间/日期',
+    disabled:true,//是否禁用
+    dateType: 'month',//date、daterange、datetime、datetimerange、year、month
+    value: 'end',//当type为datarange是value为数组[value1,value2]
+    format: 'yyyy-MM',//date | daterange：yyyy-MM-dd、datetime | datetimerange：yyyy-MM-dd
+    placeholder: '选择结束时间',
+    limit: {//时间范围
+        up: '2018-01-01 00:00:00',
+        down: '2015-01-01 00:00:00'
+    }
+}
+```
+
+#### tco-form events
+
+事件名 | 说明 | 返回值
+---|---|---
+fetchParams | 搜索 | search：搜索参数
 

@@ -13,9 +13,9 @@ h2 {
     </h2>
     <Collapse v-model="defaultName" accordion>
       <Panel name="1">搜索框
+        <!-- vertical -->
         <div slot="content">
           <tco-form
-            vertical
             btnName="看看"
             :objData="aSearch"
             :objDefault="objDefault"
@@ -82,6 +82,16 @@ h2 {
           ></tco-upload>
         </div>
       </Panel>
+      <Panel name="7">搜索组件-单个触发
+        <div slot="content">
+          <tco-form-single
+            :labelWidth="65"
+            :objDefault="objDefaultSingle"
+            :objData="objSearchSingle"
+            @fetchParams="handleFetchData"
+          />
+        </div>
+      </Panel>
     </Collapse>
   </div>
 </template>
@@ -92,6 +102,96 @@ export default {
   props: {},
   data() {
     return {
+
+      // 默认数据
+      objDefaultSingle: {
+        start: "2019-05-01",
+        end: "2019-09-01",
+        radio: "2",
+        inputNumber: 4,
+        input: "sdfsdfs",
+        select: "2"
+      },
+      // 搜索数据
+      objSearchSingle: [
+        {
+          type: "date",
+          label: "开始时间",
+          dateType: "daterange", //date、daterange、datetime、datetimerange、year、month
+          value: ["date1", "date2"], //当type为datarange是value为数组[value1,value2]
+          format: "yyyy-MM", //date | daterange：yyyy-MM-dd、datetime | datetimerange：yyyy-MM-dd
+          placeholder: "选择结束时间",
+          limit: {
+            //时间范围
+            // up: "2018-01-01 00:00:00",
+            down: "2019-01-01 00:00:00"
+          },
+          width: 200
+        },
+        {
+          type: "date",
+          label: "结束时间",
+          dateType: "month", //date、daterange、datetime、datetimerange、year、month
+          value: "end", //当type为datarange是value为数组[value1,value2]
+          format: "yyyy-MM", //date | daterange：yyyy-MM-dd、datetime | datetimerange：yyyy-MM-dd
+          placeholder: "选择结束时间",
+          limit: {
+            //时间范围
+            // up: "2018-01-01 00:00:00",
+            down: "2019-01-01 00:00:00"
+          }
+        },
+        {
+          type: "radio",
+          label: "单选框",
+          value: "radio",
+          //defaultValue: '1',//默认value
+          placeholder: "请选择",
+          data: [
+            {
+              name: "check1",
+              value: "1"
+            },
+            {
+              name: "check2",
+              value: "2"
+            }
+          ]
+        },
+        {
+          type: "inputNumber",
+          value: "inputNumber",
+          label: "数字输入框",
+          placeholder: "请输入"
+        },
+        {
+          type: "select",
+          label: "下拉框",
+          value: "select",
+          clearable: true, //是否可清除
+          filterable: true, //是否可搜索
+          //defaultValue: '1',//默认value
+          placeholder: "请选择",
+          data: [
+            {
+              name: "option1",
+              value: "1"
+            },
+            {
+              name: "option2",
+              value: "2"
+            }
+          ]
+        },
+        {
+          type: "input",
+          value: "input",
+          label: "输入框",
+          suffix: "ios-search", //	输入框尾部图标
+          placeholder: "请输入"
+        }
+      ],
+
       defaultName: "1",
       objDefault: {
         inputNumber: 4,
@@ -144,7 +244,7 @@ export default {
         {
           type: "input",
           value: "input",
-        //   disabled: true,
+          //   disabled: true,
           clearable: true,
           label: "输入框",
           prefix: "ios-contact",
@@ -155,7 +255,7 @@ export default {
         {
           type: "inputNumber",
           value: "inputNumber",
-        //   disabled: true,
+          //   disabled: true,
           label: "数字输入框",
           // required: true,
           placeholder: "请输入"
@@ -163,7 +263,7 @@ export default {
         {
           type: "date",
           label: "开始时间",
-        //   disabled: true,
+          //   disabled: true,
           dateType: "month",
           value: "begin",
           format: "yyyy-MM",
@@ -177,7 +277,7 @@ export default {
         {
           type: "date",
           label: "结束时间",
-        //   disabled: true,
+          //   disabled: true,
           dateType: "month",
           value: "end",
           format: "yyyy-MM",
@@ -315,9 +415,14 @@ export default {
         title: "文件上传成功",
         desc: "文件 " + file.name + " 上传成功。"
       });
+    },
+    // 单个表单搜索
+    handleFetchData(params){
+        console.log('单个表单搜索',params)
     }
   },
   mounted() {
+
     // 模拟请求下拉框数据
     setTimeout(() => {
       this.aTableColumnsEdit[2].edit.option = [
@@ -350,7 +455,7 @@ export default {
           organization_fullname: "集团",
           organization_fullpath: "/10001",
           has_child_department: 1,
-          expand:true,
+          expand: true,
           deep: 0,
           open: 1
         },

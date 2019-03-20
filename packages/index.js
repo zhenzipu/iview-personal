@@ -5,6 +5,7 @@ import tableCombine from "./table-combine";
 import tableEdit from "./table-edit";
 import tcoTree from "./tco-tree";
 import tcoUpload from "./tco-upload";
+import tcoFormSingle from "./tco-form-single";
 
 // 存储组件列表
 const components = [
@@ -13,7 +14,8 @@ const components = [
   tableCombine,
   tableEdit,
   tcoTree,
-  tcoUpload
+  tcoUpload,
+  tcoFormSingle
 ];
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -38,5 +40,6 @@ export default {
   tableCombine,
   tableEdit,
   tcoTree,
-  tcoUpload
+  tcoUpload,
+  tcoFormSingle
 };
